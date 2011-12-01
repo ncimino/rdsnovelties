@@ -1,5 +1,17 @@
 Rdsnovelties::Application.routes.draw do
-  get "welcome/index"
+  resources :line_items
+
+  resources :carts
+
+  resources :products
+
+  resources :categories
+
+  resources :welcome
+
+  #map.current_cart 'cart', :controller => 'carts', :action => 'show', :id => 'current'
+
+  match 'cart', :id => 'current', :to => "carts#show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -50,7 +62,8 @@ Rdsnovelties::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/aindex.html.
-  root :to => 'welcome#index'
+  #root :to => 'welcome#index'
+  root :to => 'products#index'
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,14 +1,19 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
-  <title>Rds Novelties</title>
-  <%= stylesheet_link_tag    "application" %>
+  <title>Rds Novelties <%= yield(:title) || "Untitled" %></title>
+  <%= stylesheet_link_tag 'application' %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= yield(:head) %>
 </head>
-<body>
-
-<%= yield %>
-
-</body>
+  <body>
+    <div id="container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+      <%= content_tag :h1, yield(:title) if show_title? %>
+      <%= yield %>
+    </div>
+  </body>
 </html>
