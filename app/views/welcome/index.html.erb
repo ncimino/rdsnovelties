@@ -1,0 +1,30 @@
+<h1>Rds Novelties</h1>
+
+<input id="index" type="hidden" value="1" />
+
+<div>
+<%= render :partial => "image", :collection => @show_images, :locals => {:preid => "b", :classes => "big"} %>
+<%= render :partial => "image", :collection => @hidden_images, :locals => {:preid => "b", :classes => "hidden"} %>
+</div>
+
+<div>
+<%= image_tag("left.png", {:id => "left", :alt => "Left", :class => "pointer"}) %>
+<%= render :partial => "image", :collection => @show_images, :locals => {:preid => "s", :classes => "small selected"} %>
+<%= render :partial => "image", :collection => @hidden_images, :locals => {:preid => "s", :classes => "small"} %>
+<%= image_tag("right.png", {:id => "right", :alt => "Right", :class => "pointer"}) %>
+</div>
+
+<p>Looking for a unique tee shirt gift or a tee shirt that expresses your funny side? Have fun wearing a tee
+shirt! Just view the tie tee shirts created by RD Novelties and the smiles begin. RD Novelties can also
+take a design that you may have in mind and place in on the tie tee shirt for you. If ladies won’t be seen
+in a tie, look at the T-shirt vests or the suspender tees. There are tie tee shirts in all sizes, including cute
+ones for babies. Want a bow tie t-shirt or suspenders with your tie tee shirt…they are all here for the
+asking. Different color tee shirt than white with the ties are no problem either.</p>
+
+<p>RD Novelties use direct print to place the design on the tie and because of this printing the colors don’t
+fade and parts of the design will not fall off or melt in the dryer. RD Novelties will work with you if you
+have a special idea or want your logo printed in the tie area</p>
+
+<p>For ties already listed in this website just place the order and tee will be mailed within 24 hours of
+placed orders during regular business days. If a size is temporarily out of stock, printing can be done
+within 24-48 hours and mailed out.</p>
