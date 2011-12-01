@@ -9,7 +9,7 @@
 //= require_tree .
 
 $("#left").live("click",function(){
-    if ($("#index").val() >= 1) {
+    if ($("#index").val() > 0) {
         end = parseInt($("#index").val()) + 5;
         $("#bt"+$("#index").val()).attr("class","big")
         $("#bt"+end).attr("class","hidden")
@@ -20,13 +20,13 @@ $("#left").live("click",function(){
 });
 
 $("#right").live("click",function(){
-    if ($("#index").val() < 15) {
+    if ($("#index").val() < 14) {
+        $("#index").val(parseInt($("#index").val()) + 1);
         end = parseInt($("#index").val()) + 5;
         $("#bt"+$("#index").val()).attr("class","hidden")
         $("#bt"+end).attr("class","big")
         $("#st"+$("#index").val()).attr("class","small")
         $("#st"+end).attr("class","small selected")
-        $("#index").val(parseInt($("#index").val()) + 1);
     }
 });
 

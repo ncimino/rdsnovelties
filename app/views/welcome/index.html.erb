@@ -1,16 +1,14 @@
 <h1>Rds Novelties</h1>
 
-<input id="index" type="hidden" value="1" />
+<input id="index" type="hidden" value="0" />
 
 <div>
-<%= render :partial => "image", :collection => @show_images, :locals => {:preid => "b", :classes => "big"} %>
-<%= render :partial => "image", :collection => @hidden_images, :locals => {:preid => "b", :classes => "hidden"} %>
+<%= render :partial => "image", :collection => @show_images, :locals => {:preid => "b", :classes => "big"} %><%= render :partial => "image", :collection => @hidden_images, :locals => {:preid => "b", :classes => "hidden"} %>
 </div>
 
 <div>
 <%= image_tag("left.png", {:id => "left", :alt => "Left", :class => "pointer"}) %>
-<%= render :partial => "image", :collection => @show_images, :locals => {:preid => "s", :classes => "small selected"} %>
-<%= render :partial => "image", :collection => @hidden_images, :locals => {:preid => "s", :classes => "small"} %>
+<%= render :partial => "image", :collection => @show_images, :locals => {:preid => "s", :classes => "small selected"} %><%= render :partial => "image", :collection => @hidden_images, :locals => {:preid => "s", :classes => "small"} %>
 <%= image_tag("right.png", {:id => "right", :alt => "Right", :class => "pointer"}) %>
 </div>
 
