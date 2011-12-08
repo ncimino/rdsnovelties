@@ -8,6 +8,8 @@ set :user, "root"  # The server's user for deploys
 set :deploy_to, "/srv/www/#{application}"
 set :use_sudo, false
 
+set :normalize_asset_timestamps, false
+
 role :web, "rds.econtriver.com"                          # Your HTTP server, Apache/etc
 role :app, "rds.econtriver.com"                          # This may be the same as your `Web` server
 role :db,  "rds.econtriver.com", :primary => true # This is where Rails migrations will run
