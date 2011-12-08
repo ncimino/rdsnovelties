@@ -69,7 +69,7 @@ namespace :mysql do
 
 end
 
-before :deploy, 'mysql:backup'
-after :deploy, :link_secret
-after :link_secret, :bundle
-after :bundle, :migrate
+#before :deploy, 'mysql:backup'
+#after :deploy, :link_secret
+#after :link_secret, :bundle
+#after :bundle, :migrate
