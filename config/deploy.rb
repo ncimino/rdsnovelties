@@ -17,15 +17,15 @@ role :db,  "rds.econtriver.com", :primary => true # This is where Rails migratio
 files = ['config/initializers/omniauth.rb','config/database.yml']
 
 
-task :migrate, :hosts => "rdsnovelties.econtriver.com" do
+task :migrate, :hosts => "rds.econtriver.com" do
   run "cd #{File.join(deploy_to,'current')}; bundle exec rake db:migrate RAILS_ENV=production"
 end
 
-task :bundle, :hosts => "rdsnovelties.econtriver.com" do
+task :bundle, :hosts => "rds.econtriver.com" do
   run "cd #{File.join(deploy_to,'current')}; bundle install --without development test"
 end
 
-task :link_secret, :hosts => "rdsnovelties.econtriver.com" do
+task :link_secret, :hosts => "rds.econtriver.com" do
   run files.collect{|f| "ln -s #{File.join(deploy_to,'private',f)} `readlink -f #{File.join(deploy_to,'current',f)}`" }.join(";")
 end
 
