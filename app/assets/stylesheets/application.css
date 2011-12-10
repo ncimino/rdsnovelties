@@ -129,9 +129,9 @@ table.pretty {
 }
 
 .pretty th .asc {
-  background-image: url(/images/up_arrow.gif);
+  background-image: url(/app/assets/images/up_arrow.gif);
 }
 
 .pretty th .desc {
-  background-image: url(/images/down_arrow.gif);
+  background-image: url(/app/assets/images/down_arrow.gif);
 }
