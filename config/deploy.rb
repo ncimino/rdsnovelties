@@ -14,7 +14,8 @@ role :web, "rds.econtriver.com"                          # Your HTTP server, Apa
 role :app, "rds.econtriver.com"                          # This may be the same as your `Web` server
 role :db,  "rds.econtriver.com", :primary => true # This is where Rails migrations will run
 
-files = ['config/initializers/omniauth.rb','config/database.yml']
+#'config/initializers/omniauth.rb'
+files = ['config/database.yml', 'config/initializers/secret_token.rb']
 
 
 task :migrate, :hosts => "rds.econtriver.com" do
@@ -71,7 +72,7 @@ namespace :mysql do
 
 end
 
-#before :deploy, 'mysql:backup'
-#after :deploy, :link_secret
-#after :link_secret, :bundle
-#after :bundle, :migrate
+before :deploy, 'mysql:backup'
+after :deploy, :link_secret
+after :link_secret, :bundle
+after :bundle, :migrate
