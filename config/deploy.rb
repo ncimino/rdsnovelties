@@ -25,8 +25,8 @@ task :bundle, :hosts => "rds.econtriver.com" do
   run "cd #{File.join(deploy_to,'current')}; bundle install --without development test"
 end
 
-task :precompile do
-  bundle exec rake assets:precompile
+task :precompile, :hosts => "rds.econtriver.com" do
+  run "cd #{File.join(deploy_to,'current')}; bundle exec rake assets:precompile"
 end
 
 task :link_secret, :hosts => "rds.econtriver.com" do
@@ -75,8 +75,8 @@ namespace :mysql do
 
 end
 
-before :deploy, :precompile
 before :deploy, 'mysql:backup'
 after :deploy, :link_secret
 after :link_secret, :bundle
 after :bundle, :migrate
+after :migrate, :precompile
