@@ -17,13 +17,16 @@ role :db,  "rds.econtriver.com", :primary => true # This is where Rails migratio
 #'config/initializers/omniauth.rb'
 files = ['config/database.yml', 'config/initializers/secret_token.rb']
 
-
 task :migrate, :hosts => "rds.econtriver.com" do
   run "cd #{File.join(deploy_to,'current')}; bundle exec rake db:migrate RAILS_ENV=production"
 end
 
 task :bundle, :hosts => "rds.econtriver.com" do
   run "cd #{File.join(deploy_to,'current')}; bundle install --without development test"
+end
+
+task :precompile do
+  bundle exec rake assets:precompile
 end
 
 task :link_secret, :hosts => "rds.econtriver.com" do
@@ -72,6 +75,7 @@ namespace :mysql do
 
 end
 
+before :deploy, :precompile
 before :deploy, 'mysql:backup'
 after :deploy, :link_secret
 after :link_secret, :bundle
