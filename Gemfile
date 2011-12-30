@@ -1,6 +1,9 @@
- source 'http://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
+#gem 'rmagick', '2.12.0'
+gem 'mini_magick'
+gem 'carrierwave'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'

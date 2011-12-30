@@ -1,0 +1,38 @@
+checking for Ruby version >= 1.8.5... -------------------- yes
+
+--------------------
+
+have_header: checking for stdint.h... -------------------- yes
+
+"gcc -E -I. -Ic:/Ruby187/lib/ruby/1.8/i386-mingw32 -I.    -g -O2 -DFD_SETSIZE=256     conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <stdint.h>
+/* end */
+
+--------------------
+
+have_header: checking for sys/types.h... -------------------- yes
+
+"gcc -E -I. -Ic:/Ruby187/lib/ruby/1.8/i386-mingw32 -I.    -g -O2 -DFD_SETSIZE=256     conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <sys/types.h>
+/* end */
+
+--------------------
+
+have_header: checking for wand/MagickWand.h... -------------------- no
+
+"gcc -E -I. -Ic:/Ruby187/lib/ruby/1.8/i386-mingw32 -I.    -g -O2 -DFD_SETSIZE=256     conftest.c -o conftest.i"
+conftest.c:1:29: fatal error: wand/MagickWand.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include <wand/MagickWand.h>
+/* end */
+
+--------------------
+
+
+Can't install RMagick 2.12.0. Can't find MagickWand.h.

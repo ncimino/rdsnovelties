@@ -1,5 +1,7 @@
 <% title @product.name %>
 
+<%= image_tag @product.image_url.to_s %>
+
 <%= simple_format h(@product.description) %>
 
 <p>
