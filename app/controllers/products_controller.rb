@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_filter :authorize, :except => [:index, :show]
+
   def index
     @products = Product.all(:limit => 10)
   end

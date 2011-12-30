@@ -1,13 +1,5 @@
 Rdsnovelties::Application.routes.draw do
-  resources :line_items
-
-  resources :carts
-
-  resources :products
-
-  resources :categories
-
-  resources :welcome
+  resources :line_items, :carts, :products, :categories, :sessions, :welcome
 
   #map.current_cart 'cart', :controller => 'carts', :action => 'show', :id => 'current'
 
@@ -18,6 +10,8 @@ Rdsnovelties::Application.routes.draw do
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
+  match 'login' => 'sessions#new'
+  match 'logout' => 'sessions#destroy'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:

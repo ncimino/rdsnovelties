@@ -2,18 +2,24 @@
 <html>
 <head>
   <title>Rds Novelties <%= yield(:title) || "Untitled" %></title>
+  <link href="/assets/rdp_icon_32.png" rel="icon" type="image/x-icon"/>
   <%= stylesheet_link_tag 'application' %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= yield(:head) %>
 </head>
-  <body>
-    <div id="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-      <%= content_tag :h1, yield(:title) if show_title? %>
-      <%= yield %>
-    </div>
-  </body>
+<body>
+<div id="container">
+  <% if admin? %>
+      <%= link_to "New Product", new_product_path %> |
+      <%= link_to "Signout", logout_path %><br /><br />
+  <% end %>
+  <%= link_to image_tag("rdp_icon_64.png", {:alt => "R.d.p. NovelTie's", :style => "float:right;"}), root_path %>
+  <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <% end %>
+  <%= content_tag :h1, yield(:title) if show_title? %>
+  <%= yield %>
+</div>
+</body>
 </html>

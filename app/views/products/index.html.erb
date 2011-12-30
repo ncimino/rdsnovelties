@@ -1,4 +1,6 @@
-<% title "Products" %>
+<% title("Products", false) %>
+
+<%= link_to image_tag("rd_novelties_50.png", {:alt => "R.d. NovelTie's"}), root_path %>
 
 <% for product in @products %>
   <div class="product">
