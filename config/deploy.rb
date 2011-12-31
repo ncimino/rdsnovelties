@@ -27,7 +27,8 @@ task :bundle, :hosts => "rds.econtriver.com" do
 end
 
 task :precompile, :hosts => "rds.econtriver.com" do
-  run "cd #{File.join(deploy_to,'current')}; rm -rf #{File.join(deploy_to,'current/public/assets')}; bundle exec rake assets:precompile RAILS_ENV=production"
+  run "cd #{File.join(deploy_to,'current')}; bundle exec rake assets:precompile RAILS_ENV=production"
+  #run "cd #{File.join(deploy_to,'current')}; rm -rf #{File.join(deploy_to,'current/public/assets')}; bundle exec rake assets:precompile RAILS_ENV=production"
   #return 1
 end
 
