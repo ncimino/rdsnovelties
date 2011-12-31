@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20111231154741) do
   end
 
   create_table "line_items", :force => true do |t|
-    t.decimal  "unit_price"
+    t.decimal  "unit_price", :scale => 2
     t.integer  "product_id"
     t.integer  "cart_id"
     t.integer  "quantity"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20111231154741) do
   create_table "products", :force => true do |t|
     t.integer  "category_id"
     t.string   "name"
-    t.decimal  "price"
+    t.decimal  "price", :scale => 2
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"

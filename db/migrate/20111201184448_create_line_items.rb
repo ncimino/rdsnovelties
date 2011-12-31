@@ -1,7 +1,7 @@
 class CreateLineItems < ActiveRecord::Migration
   def change
     create_table :line_items do |t|
-      t.decimal :unit_price
+      t.decimal :unit_price, :scale => 2
       t.integer :product_id
       t.integer :cart_id
       t.integer :quantity
