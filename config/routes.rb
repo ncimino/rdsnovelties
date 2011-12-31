@@ -11,7 +11,9 @@ Rdsnovelties::Application.routes.draw do
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   match 'login' => 'sessions#new'
+  match 'signin' => 'sessions#new'
   match 'logout' => 'sessions#destroy'
+  match 'signout' => 'sessions#destroy'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
@@ -57,7 +59,7 @@ Rdsnovelties::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/aindex.html.
   #root :to => 'welcome#index'
-  root :to => 'products#index'
+  root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 

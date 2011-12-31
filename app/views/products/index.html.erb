@@ -2,15 +2,28 @@
 
 <%= link_to image_tag("rd_novelties_50.png", {:alt => "R.d. NovelTie's"}), root_path %>
 
-<% for product in @products %>
-  <div class="product">
-    <h3>
-      <%= image_tag product.image_url(:thumb).to_s %><br />
-      <%= link_to h(product.name), product %>
-      <%= number_to_currency(product.price) %>
-    </h3>
-    <div class="actions">
-      <%= link_to "Add to Cart", line_items_path(:product_id => product), :method => :post %>
-    </div>
-  </div>
-<% end %>
+<table style="width: 100%">
+  <% @products.each_with_index do |product, index| %>
+      <% if index == 0 %>
+          <tr>
+      <% elsif (index % 4) == 0 %>
+          </tr>
+          <tr>
+      <% end %>
+      <td>
+        <div class="product">
+          <h3>
+            <%= image_tag product.image_url(:thumb).to_s %><br/>
+            <%= link_to h(product.name), product %><br />
+            <%= number_to_currency(product.price) %>
+          </h3>
+          <div class="actions">
+            <%= link_to "Add to Cart", line_items_path(:product_id => product), :method => :post %>
+          </div>
+        </div>
+      </td>
+      <% if index == @products.length %>
+          </tr>
+      <% end %>
+  <% end %>
+</table>
