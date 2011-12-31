@@ -15,7 +15,8 @@ role :app, "rds.econtriver.com"                          # This may be the same 
 role :db,  "rds.econtriver.com", :primary => true # This is where Rails migrations will run
 
 #'config/initializers/omniauth.rb'
-files = ['config/database.yml', 'config/initializers/secret_token.rb']
+secret_files = ['config/database.yml', 'config/initializers/secret_token.rb']
+upload_dirs = ['public/uploads']
 
 task :migrate, :hosts => "rds.econtriver.com" do
   run "cd #{File.join(deploy_to,'current')}; bundle exec rake db:migrate RAILS_ENV=production"
@@ -26,21 +27,26 @@ task :bundle, :hosts => "rds.econtriver.com" do
 end
 
 task :precompile, :hosts => "rds.econtriver.com" do
-  run "cd #{File.join(deploy_to,'current')}; bundle exec rake assets:precompile"
+  run "cd #{File.join(deploy_to,'current')}; rm -rf #{File.join(deploy_to,'current/public/assets')}; bundle exec rake assets:precompile RAILS_ENV=production"
+  #return 1
+end
+
+task :link_uploads, :hosts => "rds.econtriver.com" do
+  run upload_dirs.collect{|f| "ln -s #{File.join(deploy_to,'shared',f)} `readlink -f #{File.join(deploy_to,'current',f)}`" }.join(";")
 end
 
 task :link_secret, :hosts => "rds.econtriver.com" do
-  run files.collect{|f| "ln -s #{File.join(deploy_to,'private',f)} `readlink -f #{File.join(deploy_to,'current',f)}`" }.join(";")
+  run secret_files.collect{|f| "ln -s #{File.join(deploy_to,'private',f)} `readlink -f #{File.join(deploy_to,'current',f)}`" }.join(";")
 end
 
 task :put_secret do
-  files.each do |f|
+  secret_files.each do |f|
     system("scp #{f} #{user}@econtriver.com:#{File.join(deploy_to,'private',f)}")
   end
 end
 
 task :get_secret do
-  files.each do |f|
+  secret_files.each do |f|
     system("scp #{user}@econtriver.com:#{File.join(deploy_to,'private',f)} #{f}")
   end
 end
@@ -76,6 +82,7 @@ namespace :mysql do
 end
 
 before :deploy, 'mysql:backup'
+after :deploy, :link_uploads
 after :deploy, :link_secret
 after :link_secret, :bundle
 after :bundle, :migrate

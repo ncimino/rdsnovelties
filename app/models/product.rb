@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  attr_accessible :name, :price, :released_at, :image, :description
+  attr_accessible :name, :price, :released_at, :image, :description, :image_width, :image_height
 
   def self.search(search)
     if search

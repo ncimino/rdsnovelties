@@ -4,6 +4,7 @@ gem 'rails', '3.1.3'
 #gem 'rmagick', '2.12.0'
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'carrierwave-meta'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'

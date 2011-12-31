@@ -22,11 +22,11 @@ class ProductsController < ApplicationController
       render :action => 'new'
     end
   end
-  
+
   def edit
     @product = Product.find(params[:id])
   end
-  
+
   def update
     @product = Product.find(params[:id])
     if @product.update_attributes(params[:product])
@@ -43,4 +43,12 @@ class ProductsController < ApplicationController
     flash[:notice] = "Successfully destroyed product."
     redirect_to products_url
   end
+
+  protected
+
+  def get_image_dimensions(file)
+    width, height = `identify -format "%wx%h" #{file}`.split(/x/)
+
+  end
+
 end

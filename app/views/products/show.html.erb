@@ -1,6 +1,6 @@
 <% title @product.name %>
 
-<%= image_tag @product.image_url.to_s %>
+<%= link_to image_tag(@product.image_url.to_s, {:height => "500"}), @product.image_url.to_s, :target => "_blank" %>
 <br />
 <% unless @product.description.empty? %>
     <%= link_to "Add to Cart", line_items_path(:product_id => @product), :method => :post %>

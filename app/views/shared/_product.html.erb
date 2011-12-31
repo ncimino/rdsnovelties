@@ -3,11 +3,14 @@ start ||= 0
 counter = product_counter + start
 classes ||= ""
 preid ||= ""
-thumb ||= false
-if thumb
+small ||= false
+maxh = 300
+maxw = 150
+if small
     image = product.image_url(:thumb)
+    #width =
 else
-    image = product.image_url
+    image = product.image_url(:thumb)
 end
 %>
 <%= link_to image_tag(image.to_s, {:id => preid + counter.to_s, :class => classes}), product %>

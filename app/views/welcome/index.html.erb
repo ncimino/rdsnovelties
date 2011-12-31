@@ -11,15 +11,19 @@
     <%= render :partial => "shared/product", :collection => @products[0..show-1], :locals => {:preid => "bpi", :classes => "big"} %>
     <%= render :partial => "shared/product", :collection => @products[show..length], :locals => {:preid => "bpi", :classes => "hidden", :start => show} %>
 </div>
+
+<% if length > show %>
 <div style="text-align: center;">
   <%= image_tag("left.png", {:id => "left", :alt => "Left", :class => "pointer"}) %>
   <span id="left_more" class="hidden">...</span>
-  <%= render :partial => "shared/product", :collection => @products[0..show-1], :locals => {:thumb => true, :preid => "spi", :classes => "small selected"} %>
-  <%= render :partial => "shared/product", :collection => @products[show..thumb_max-1], :locals => {:thumb => true, :preid => "spi", :classes => "small", :start => show} %>
-  <%= render :partial => "shared/product", :collection => @products[thumb_max..length], :locals => {:thumb => true, :preid => "spi", :classes => "hidden", :start => thumb_max} %>
+  <%= render :partial => "shared/product", :collection => @products[0..show-1], :locals => {:small => true, :preid => "spi", :classes => "small selected"} %>
+  <%= render :partial => "shared/product", :collection => @products[show..thumb_max-1], :locals => {:small => true, :preid => "spi", :classes => "small", :start => show} %>
+  <%= render :partial => "shared/product", :collection => @products[thumb_max..length], :locals => {:small => true, :preid => "spi", :classes => "hidden", :start => thumb_max} %>
   <span id="right_more" class="<%= (length > thumb_max) ? "" : "hidden" %>">...</span>
   <%= image_tag("right.png", {:id => "right", :alt => "Right", :class => "pointer"}) %>
 </div>
+<% end %>
+
 <div style="float:right;">
 <%= link_to "Show all Products", products_path %>
 </div>

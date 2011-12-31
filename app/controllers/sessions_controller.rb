@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
+  require "digest"
   def create
-    session[:password] = params[:password]
-    #session[:password] = md5(md5('lkj@#%kaf;lk^$%&*$%') + params[:password])
+    #session[:password] = params[:password]
+    session[:password] = Digest::MD5.hexdigest(Digest::MD5.hexdigest('lkj@#%kaf;lk^$%&*$%') + params[:password])
     if admin?
       flash[:notice] = "Successfully logged in"
       redirect_to root_path

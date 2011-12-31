@@ -23,8 +23,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def admin?
-    session[:password] == 'foobar'
-    #$hash = md5(md5(salt) + session[:password])
+    session[:password] == 'b7df50c78e39835e01c7dca50a101aa3'
+    #session[:password] = md5(md5(salt) + session[:password])
   end
 
   def authorize
