@@ -4,7 +4,7 @@ db/*.sqlite3
 log/*.log
 tmp/
 sass-cache/
-config/database.yml
-config/initializers/omniauth.rb
-config/initializers/secret_token.rb
 public/uploads
+certs/app_key.pem
+config/app_config.yml
+config/database.yml

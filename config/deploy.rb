@@ -15,7 +15,7 @@ role :app, "rds.econtriver.com"                          # This may be the same 
 role :db,  "rds.econtriver.com", :primary => true # This is where Rails migrations will run
 
 #'config/initializers/omniauth.rb'
-secret_files = ['config/database.yml', 'config/initializers/secret_token.rb']
+secret_files = ['config/database.yml', 'config/app_config.yml', 'certs/app_key.pem']
 upload_dirs = ['public/uploads']
 
 task :migrate, :hosts => "rds.econtriver.com" do

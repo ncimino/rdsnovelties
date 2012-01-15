@@ -15,6 +15,7 @@
       <%= link_to "Signout", logout_path %><br /><br />
   <% end %>
   <%= link_to image_tag("rdp_icon_64.png", {:alt => "R.d.p. NovelTie's", :style => "float:right;"}), root_path %>
+  <span style="float: right;"><%= link_to "My Cart", "cart" %></span>
   <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
   <% end %>
