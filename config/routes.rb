@@ -1,4 +1,6 @@
 Rdsnovelties::Application.routes.draw do
+  resources :payment_notifications
+
   resources :line_items, :carts, :products, :categories, :sessions, :welcome
 
   #map.current_cart 'cart', :controller => 'carts', :action => 'show', :id => 'current'

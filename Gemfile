@@ -8,6 +8,9 @@ gem 'carrierwave-meta'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
+group :development do
+  gem 'nifty-generators'
+end
 
 group :development, :test do
   gem 'sqlite3'
@@ -42,3 +45,4 @@ group :test do
   # Pretty printed test output
   gem 'turn', :require => false
 end
+gem "mocha", :group => :test
