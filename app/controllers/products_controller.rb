@@ -48,7 +48,6 @@ class ProductsController < ApplicationController
 
   def get_image_dimensions(file)
     width, height = `identify -format "%wx%h" #{file}`.split(/x/)
-
   end
 
 end
