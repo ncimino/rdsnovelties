@@ -12,13 +12,7 @@ group :development do
   gem 'nifty-generators'
 end
 
-group :development, :test do
-  gem 'sqlite3'
-end
-
-group :production do
-  gem 'mysql2'
-end
+gem 'mysql2'
 
 gem 'json'
 

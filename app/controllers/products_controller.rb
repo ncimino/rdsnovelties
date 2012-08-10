@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
   end
   
   def create
+    Rails.logger.debug "Product: #{params[:product]}"
     @product = Product.new(params[:product])
     if @product.save
       flash[:notice] = "Successfully created product."
