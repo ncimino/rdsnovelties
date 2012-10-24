@@ -5,3 +5,35 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rdsnovelties::Application.load_tasks
+
+#files = ['config/initializers/omniauth.rb','config/database.yml','config/initializers/secret_token.rb']
+files = ['config/app_config.yml','certs/app_key.pem','config/database.yml','config/initializers/secret_token.rb']
+
+domain = "rds.econtriver.com"
+user = "root"  # The server's user for deploys
+deploy_to = "/srv/www/#{domain}"
+
+task :setup_server_db do
+  system("ssh #{user}@#{domain} 'cd #{File.join(deploy_to,'current')};rake db:setup RAILS_ENV=production'")
+end
+
+task :put_secret do
+  files.each do |f|
+    cmd = "scp #{f} #{user}@#{domain}:#{File.join(deploy_to,'private',f)}"
+    puts cmd
+    system(cmd)
+  end
+end
+
+task :get_secret do
+  files.each do |f|
+    system("scp #{user}@#{domain}:#{File.join(deploy_to,'private',f)} #{f}")
+  end
+end
+
+task :backup do
+  filename = "rds.db_backup.#{Time.now.to_f}.sql.bz2"
+  filepath = File.join(deploy_to,'current',filename)
+  config = YAML.load_file(File.join(deploy_to,'private', 'config', 'database.yml'))
+  system("mysqldump -u #{config['production']['username']} -p'#{config['production']['password']}' #{config['production']['database']} | bzip2 -c > #{filepath}\n")
+end
